@@ -3,8 +3,8 @@
     <device-status-container></device-status-container>
 
     <div class="center-screen">
-      <date-component></date-component>
-      <weather-component></weather-component>
+      <date-component :data="date"></date-component>
+      <weather-component :data="weather"></weather-component>
     </div>
 
     <news-component></news-component>
@@ -31,9 +31,16 @@ export default {
       date: null
     }
   },
+  mounted(){
+    this.fetchData()
+  },
   methods:{
     fetchData(){
-      //axios.get()
+      axios.get(process.env.VUE_APP_WEATHER_API_URL+`jerusalem&units=metric&appid=${process.env.VUE_APP_WEATHER_API_KEY}`).then(res => {
+        this.weather = res
+        this.date = res.data.main
+        console.log(res)
+      })
     }
   }
 }
