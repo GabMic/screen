@@ -1,17 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <device-status-container></device-status-container>
+
+    <div class="center-screen">
+      <date-component></date-component>
+      <weather-component></weather-component>
+    </div>
+
+    <news-component></news-component>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import DeviceStatusContainer from "./components/status/DeviceStatusContainer";
+import WeatherComponent from "./components/weather/WeatherComponent";
+import DateComponent from "./components/date/DateComponent";
+import NewsComponent from "./components/news/NewsComponent";
+import axios from "axios"
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    NewsComponent,
+    DateComponent,
+    WeatherComponent,
+    DeviceStatusContainer
+  },
+  data(){
+    return{
+      weather: null,
+      date: null
+    }
+  },
+  methods:{
+    fetchData(){
+      //axios.get()
+    }
   }
 }
 </script>
