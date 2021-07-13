@@ -1,5 +1,5 @@
 <template>
-<div class="weather-wrapper">
+<div class="weather-wrapper" @click="openPopup = !openPopup">
   <div class="icon">
     <img :src="displayIcon()" alt="">
   </div>
@@ -7,17 +7,27 @@
     <h2>{{data.data.main.temp}} °C</h2>
     <h5>{{data.data.name}}</h5>
   </div>
-  <div></div>
+  <div style="position: absolute; top: 57%">
+    <popup :data="data" v-if="openPopup"></popup>
+  </div>
 </div>
 </template>
 
 <script>
+import Popup from "../utils/Popup";
 export default {
   name: "WeatherComponent",
+  components: {Popup},
   props: {
     data: {
       type: Object,
       default: null
+    }
+  },
+
+  data(){
+    return {
+      openPopup: false
     }
   },
 
@@ -64,9 +74,14 @@ h4, h5, h2, h3{
 .weather-wrapper{
   display: flex;
   justify-content: center;
-  border: 1px solid black;
 }
 .icon{
   margin: 0;
+}
+.icon:hover{
+  cursor: pointer;
+}
+.middle:hover{
+  cursor: pointer;
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="status-wrapper">
+    <h5>T-Mobile</h5>
     <battery></battery>
   </div>
 </template>
@@ -13,5 +14,14 @@ export default {
 </script>
 
 <style scoped>
-
+.status-wrapper{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.1rem 0 0.1rem;
+  align-items: center;
+}
+h5{
+  padding: 0;
+  margin: 0;
+}
 </style>
